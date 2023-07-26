@@ -13,7 +13,11 @@ function TopRatedItem({
   return (
     <div className="flex flex-col w-[300px] flex-shrink-0 bg-base-100  rounded-lg overflow-hidden shadow-xl transition hover:scale-105">
       <Link to={`/${type}/${id}`}>
-        <img src={`${IMG_PATH}/w300${backdrop_path}`} alt={`${title}`} />
+        <img
+          src={`${IMG_PATH}/w300${backdrop_path}`}
+          alt={`${title}`}
+          loading="lazy"
+        />
         <div className="p-2 flex justify-between">
           <div className="w-2/3">
             <p className="font-bold ">

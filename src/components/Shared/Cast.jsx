@@ -21,6 +21,7 @@ function Cast({ credits }) {
                       src={`${IMG_PATH}/w500${member.profile_path}`}
                       alt={member.name}
                       className="w-full h-full"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="h-full w-full flex items-center justify-center">

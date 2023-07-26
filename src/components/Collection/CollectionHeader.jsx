@@ -15,6 +15,7 @@ function CollectionHeader({ data }) {
       <img
         src={`${IMG_PATH}/w300${poster_path}`}
         alt={`${name}-poster`}
+        loading="lazy"
         className="rounded-lg w-[200px]"
       />
       <div className="flex flex-col gap-4 justify-evenly">

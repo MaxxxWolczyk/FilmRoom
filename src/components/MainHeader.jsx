@@ -20,7 +20,7 @@ function MainHeader() {
   return (
     <>
       <header>
-        <div className="navbar bg-neutral shadow-md flex justify-between flex-wrap md:px-10">
+        <div className="navbar bg-neutral shadow-md flex justify-between items-center flex-wrap md:px-10">
           <Link
             to="/"
             className="flex items-center justify-center pl-4 md:pl-0"

@@ -61,8 +61,9 @@ function Slider({ dataArr, path }) {
                     <img
                       className="rounded-lg min-h-[210px] "
                       src={`${IMG_PATH}/w500${movieData.poster_path}`}
-                      alt=""
+                      alt="movie poster"
                       draggable="false"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="w-full aspect-[9/13.5] rounded-lg flex items-center justify-center bg-zinc-900">

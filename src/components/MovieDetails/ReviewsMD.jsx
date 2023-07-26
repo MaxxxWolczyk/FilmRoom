@@ -32,7 +32,11 @@ function ReviewsMD({ reviews }) {
           <div className="avatar">
             <div className="w-12 rounded-full">
               {reviews.results[item].author_details.avatar_path ? (
-                <img src={getAvatarURL(item, reviews)} />
+                <img
+                  src={getAvatarURL(item, reviews)}
+                  loading="lazy"
+                  alt="avatar-photo"
+                />
               ) : (
                 <div className="bg-black w-full h-full flex items-center justify-center font-bold text-primary uppercase text-2xl">
                   {reviews.results[item].author_details.username.slice(0, 1)}

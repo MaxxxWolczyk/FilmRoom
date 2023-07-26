@@ -9,8 +9,12 @@ function DescriptionMD({ data }) {
       <div className="flex items-center justify-center">
         <img
           src={`${IMG_PATH}/original${poster_path}`}
-          alt=""
+          alt="Movie-poster"
+          loading="lazy"
           className="w-1/2 md:w-auto shadow-lg min-w-[200px] max-w-[250px]"
+          onLoad={() => {
+            console.log("siema siema");
+          }}
         />
       </div>
       <div className="flex flex-col gap-5">

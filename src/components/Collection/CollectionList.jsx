@@ -15,7 +15,8 @@ function CollectionList({ data }) {
           >
             <img
               src={`${IMG_PATH}/w300${movie.poster_path}`}
-              alt=""
+              alt={`${movie.title}-poster`}
+              loading="lazy"
               className="sm:w-[150px]"
             />
             <div className="flex flex-col gap-4 pl-4 pt-2 sm:border-y-[.5px] sm:border-r-[.5px] sm:rounded-r-lg w-full border-gray-700">

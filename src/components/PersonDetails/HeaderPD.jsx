@@ -11,8 +11,6 @@ function HeaderPD({ data }) {
     also_known_as,
   } = data;
 
-  console.log(data);
-
   const IMG_PATH = process.env.REACT_APP_IMG_PATH;
 
   let genderString;
@@ -41,8 +39,9 @@ function HeaderPD({ data }) {
           ) : (
             <img
               src={`${IMG_PATH}/w500${profile_path}`}
-              alt=""
+              alt="person-photo"
               className="h-full rounded-lg shadow-2xl"
+              loading="lazy"
             />
           )}
         </div>

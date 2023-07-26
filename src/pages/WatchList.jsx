@@ -123,7 +123,7 @@ function WatchList() {
             </div>
           </div>
           {showTv && (
-            <div className="w-full flex  flex-wrap gap-3  p-4">
+            <div className="w-full flex flex-wrap gap-3 p-4 justify-center md:justify-start">
               {tvArray.length > 0 ? (
                 tvArray.map((item) => (
                   <WatchListItem

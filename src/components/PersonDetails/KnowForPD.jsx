@@ -62,8 +62,9 @@ function KnowForPD({ movie_credits, birthday, type }) {
                     <div className="flex gap-4 ">
                       <img
                         src={`${IMG_PATH}/w300/${data.poster_path}`}
-                        alt=""
+                        alt="film photo"
                         className="w-[100px] rounded-lg"
+                        loading="lazy"
                       />
                       <p className="text-base">
                         {data.overview.slice(0, 100) + "..."}

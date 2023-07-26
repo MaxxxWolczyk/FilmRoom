@@ -17,6 +17,7 @@ function VideosMD({ videos, title }) {
                 src={`https://www.youtube.com/embed/${trailerKey.key}`}
                 title="YouTube video player"
                 frameBorder="0"
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
@@ -28,6 +29,7 @@ function VideosMD({ videos, title }) {
                     src={`https://www.youtube.com/embed/${videos.results[0].key}`}
                     title="YouTube video player"
                     frameBorder="0"
+                    loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
@@ -36,6 +38,7 @@ function VideosMD({ videos, title }) {
                     src={`https://www.youtube.com/embed/${videos.results[1].key}`}
                     title="YouTube video player"
                     frameBorder="0"
+                    loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>

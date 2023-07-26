@@ -8,7 +8,12 @@ function WatchListItem({ data, type, onDelete }) {
   const { poster, title, release, id } = data;
   return (
     <div className="flex border-2 border-primary rounded-lg overflow-hidden bg-zinc-900">
-      <img src={`${IMG_PATH}/w300${poster}`} alt="" className="w-[125px]" />
+      <img
+        src={`${IMG_PATH}/w300${poster}`}
+        alt="poster"
+        className="w-[125px]"
+        loading="lazy"
+      />
       <div className="flex flex-col px-2 py-2 w-[130px]">
         <p className="font-bold">
           {title.length > 20 ? `${title.slice(0, 30)}...` : title}

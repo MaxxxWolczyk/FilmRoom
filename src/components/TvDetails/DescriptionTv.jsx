@@ -10,7 +10,8 @@ function DescriptionTV({ data }) {
       <div className="flex items-center justify-center">
         <img
           src={`${IMG_PATH}/original${poster_path}`}
-          alt=""
+          alt="poster"
+          loading="lazy"
           className="w-1/2 md:w-auto shadow-lg min-w-[200px] max-w-[250px]"
         />
       </div>

@@ -18,8 +18,9 @@ function WatchProviders({ watchProviders, id, elementType }) {
             >
               <img
                 src={`${IMG_PATH}/w500${item.logo_path}`}
-                alt=""
+                alt="provider-icon"
                 className="w-[50px] h-[50px] mb-3 rounded-lg transition border-primary hover:border-4 hover:scale-125"
+                loading="lazy"
               />
             </a>
           </div>
@@ -36,7 +37,10 @@ function WatchProviders({ watchProviders, id, elementType }) {
             {Object.keys(watchProviders)
               .filter((item) => item !== "link")
               .map((itemName) => (
-                <div className="flex flex-col bg-zinc-900 p-5 gap-2 rounded-lg">
+                <div
+                  className="flex flex-col bg-zinc-900 p-5 gap-2 rounded-lg"
+                  key={`provider-${itemName}`}
+                >
                   <h3 className="text-white font-semibold mb-2 text-xl">
                     {itemName.toUpperCase()}
                   </h3>

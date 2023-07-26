@@ -16,7 +16,8 @@ function SeasonList({ seasons, lastSeasonNumber }) {
                 {season.poster_path ? (
                   <img
                     src={`${IMG_PATH}/w500${season.poster_path}`}
-                    alt=""
+                    alt="season-poster"
+                    loading="lazy"
                     className=" w-[250px] lg:w-[140px]"
                   ></img>
                 ) : (

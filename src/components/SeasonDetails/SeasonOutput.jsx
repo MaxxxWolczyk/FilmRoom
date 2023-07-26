@@ -12,8 +12,9 @@ function SeasonOutput({ episodes }) {
           {episode.still_path ? (
             <img
               src={`${IMG_PATH}/w500${episode.still_path}`}
-              alt=""
+              alt="episode-photo"
               className="w-[300px] aspect-video"
+              loading="lazy"
             />
           ) : (
             <div className="w-[300px] aspect-video bg-black flex items-center justify-center">
