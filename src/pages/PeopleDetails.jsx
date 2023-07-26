@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { defer, useLoaderData, useNavigate, Navigate } from "react-router-dom";
+import { defer, useLoaderData, Navigate } from "react-router-dom";
 import { Await } from "react-router-dom";
 import Spinner from "../components/UI/Spinner";
 import HeaderPD from "../components/PersonDetails/HeaderPD";
@@ -66,7 +66,6 @@ function PeopleDetails() {
 export default PeopleDetails;
 
 export const PeopleDetailsLoader = async ({ params }) => {
-  const navigate = useNavigate();
   const options = {
     method: "GET",
     headers: {
@@ -74,15 +73,9 @@ export const PeopleDetailsLoader = async ({ params }) => {
       Authorization: process.env.REACT_APP_API_TOKEN,
     },
   };
-
   const url = `https://api.themoviedb.org/3/person/${params.peopleId}?append_to_response=images,combined_credits`;
   const response = await fetch(url, options);
 
-  if (!response.ok) {
-    console.log("bad Movie");
-    navigate("/not-found");
-    return;
-  }
 
   return defer({
     data: response.json(),
