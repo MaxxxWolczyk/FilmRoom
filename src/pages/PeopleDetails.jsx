@@ -73,7 +73,6 @@ export const PeopleDetailsLoader = async ({ params }) => {
       Authorization: process.env.REACT_APP_API_TOKEN,
     },
   };
-
   const url = `https://api.themoviedb.org/3/person/${params.peopleId}?append_to_response=images,combined_credits`;
   const response = await fetch(url, options);
 
