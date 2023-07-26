@@ -10,10 +10,34 @@
 .swiper-button-prev {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 2rem;
+  /* font-size: 10px; */
   border-radius: 50%;
   transition: transform 0.3s;
 }
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
   transform: scale(1.1);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

@@ -22,6 +22,7 @@ function ReviewsMD({ reviews }) {
 
   const ReviewComponent = ({ item }) => {
     const [showText, setShowText] = useState(false);
+    console.log(item);
 
     return (
       <div
@@ -34,7 +35,9 @@ function ReviewsMD({ reviews }) {
               {reviews.results[item].author_details.avatar_path ? (
                 <img src={getAvatarURL(item, reviews)} />
               ) : (
-                <div className="bg-primary w-full h-full"></div>
+                <div className="bg-black w-full h-full flex items-center justify-center font-bold text-primary uppercase text-2xl">
+                  {reviews.results[item].author_details.username.slice(0, 1)}
+                </div>
               )}
             </div>
           </div>
@@ -80,10 +83,12 @@ function ReviewsMD({ reviews }) {
     <div className="w-full  flex flex-col rounded-lg p-3 gap-3">
       {reviewArray ? (
         reviewArray.map((item) => {
-          return <ReviewComponent item={item} />;
+          return <ReviewComponent item={item} key={item.id} />;
         })
       ) : (
-        <p>No reviews aviable</p>
+        <div className="flex p-4 items-center justify-center bg-black rounded-lg">
+          <p className="text-2xl text-white">No Reviews Aviable</p>
+        </div>
       )}
     </div>
   );

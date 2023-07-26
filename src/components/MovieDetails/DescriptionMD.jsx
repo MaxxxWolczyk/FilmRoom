@@ -2,7 +2,7 @@ import React from "react";
 const IMG_PATH = process.env.REACT_APP_IMG_PATH;
 
 function DescriptionMD({ data }) {
-  const { adult, genres, overview, poster_path, vote_average, credits } = data;
+  const { genres, overview, poster_path, vote_average, credits } = data;
 
   return (
     <div className="flex flex-wrap md:flex-nowrap gap-5">
@@ -16,31 +16,30 @@ function DescriptionMD({ data }) {
       <div className="flex flex-col gap-5">
         <p className="text-lg text-white mb-auto ">{overview}</p>
         <div className="flex gap-3 flex-col py-3">
-          <p className="">
+          <p className="font-bold text-white">
             Director:{" "}
-            <span className="text-white">
-              {credits.crew.length > 0
+            <span className="font-normal text-gray-400">
+              {credits.crew.filter((item) => item.job === "Director").lenght !==
+              0
                 ? credits.crew.find((item) => item.job === "Director").name
                 : "No information"}
             </span>
           </p>
-          <p className="">
+          <p className="font-bold text-white">
             Genre:{" "}
-            <span className="text-white">
-              {genres.map((genre) => `${genre.name} `).join(", ")}
+            <span className="font-normal text-gray-400">
+              {[...genres.map((genre) => genre.name)].join(", ")}
             </span>
           </p>
-          <p className="">
+          <p className="font-bold text-white">
             Rating:{" "}
-            <span className="text-white">{`${vote_average.toFixed(
-              1
-            )} / 10`}</span>
-          </p>
-          <p className="">
-            Age:{" "}
-            <span className="text-white">{`${
-              adult ? "18+" : "Dla każdego"
-            }`}</span>
+            {vote_average.toFixed(1) === "0.0" ? (
+              <span className="font-normal text-gray-400">No reviews yet.</span>
+            ) : (
+              <span className="text-gray-400 font-normal">{`${vote_average.toFixed(
+                1
+              )} / 10`}</span>
+            )}
           </p>
         </div>
       </div>

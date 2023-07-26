@@ -1,7 +1,8 @@
 const IMG_PATH = process.env.REACT_APP_IMG_PATH;
 
-function HeaderMD({ data }) {
-  const { backdrop_path, status, title, release_date, runtime } = data;
+function HeaderTV({ data }) {
+  const { backdrop_path, status, name, first_air_date, episode_run_time } =
+    data;
 
   return (
     <div
@@ -18,16 +19,13 @@ function HeaderMD({ data }) {
     >
       <div className="w-full absolute bottom-0 px-10 py-7 text-white">
         <p className="text-primary">{status}</p>
-        <h3 className=" text-3xl lg:text-5xl mb-1">{title}</h3>
+        <h3 className=" text-3xl lg:text-5xl mb-1">{name}</h3>
         <div className="flex gap-5 text-slate-500">
-          <p>{release_date}</p>
-          <p>
-            {Math.floor(runtime / 60)}h {Math.floor(runtime % 60)}min
-          </p>
+          <p>{first_air_date}</p>
         </div>
       </div>
     </div>
   );
 }
 
-export default HeaderMD;
+export default HeaderTV;

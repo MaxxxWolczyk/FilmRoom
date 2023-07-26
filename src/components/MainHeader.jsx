@@ -1,62 +1,91 @@
-import { Outlet } from "react-router-dom";
-import { FaBeer, FaArrowUp } from "react-icons/fa";
+import { Outlet, useNavigate } from "react-router-dom";
+import { FaBeer, FaArrowUp, FaUser } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
+import { useAuthStatus } from "../hooks/useAuthStatus";
+import { auth } from "../config/firebase";
 
 function MainHeader() {
+  const { loggedIn, checkingStatus } = useAuthStatus();
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate("/sign-in");
+    auth.signOut();
+    window.location.reload(false);
+  };
+
   const moveUp = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
   return (
     <>
       <header>
-        <div className="navbar bg-neutral shadow-md flex justify-center md:justify-normal flex-wrap items-center px-10">
-          <div className="order-1 mr-auto sm:mr-0 mt-4 mb-10 sm:my-0">
-            <Link to="/" className="flex items-center justify-center">
-              <FaBeer />
-              <p className="pl-2 text-lg">Movie Finder</p>
-            </Link>
-          </div>
-          {/* <div className="divider w-full sm:hidden order-3 m-1"></div> */}
-          <div className="order-3 sm:order-2 sm:mr-auto sm:ml-8 mb-3 sm:mb-0">
-            <div className="w-full">
-              <ul className="flex gap-10">
+        <div className="navbar bg-neutral shadow-md flex justify-between flex-wrap md:px-10">
+          <Link
+            to="/"
+            className="flex items-center justify-center pl-4 md:pl-0"
+          >
+            <FaBeer />
+            <p className="pl-2 text-lg">Film room</p>
+          </Link>
+
+          {checkingStatus ? (
+            <p>Loading</p>
+          ) : loggedIn ? (
+            <div className="dropdown dropdown-end">
+              <label
+                tabIndex={0}
+                className="btn btn-ghost rounded-btn hover:bg-primary hover:text-base-100"
+              >
+                <p className="pr-2">{auth.currentUser.displayName}</p>
+                <div className="avatar">
+                  <div className="w-8 rounded-full">
+                    <img src={auth.currentUser.photoURL} />
+                  </div>
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content z-[1] p-2 shadow bg-zinc-900 rounded-box w-52 mt-4 "
+              >
                 <li>
-                  <NavLink
-                    to="/movies"
-                    className={({ isActive }) =>
-                      isActive ? "text-primary" : ""
-                    }
+                  <Link
+                    to={"/profile"}
+                    className="hover:bg-primary hover:text-base-100"
                   >
-                    Movies
-                  </NavLink>
+                    Profile Details
+                  </Link>
                 </li>
                 <li>
-                  <NavLink
-                    to="/tv"
-                    className={({ isActive }) =>
-                      isActive ? "text-primary" : ""
-                    }
+                  <Link
+                    to={"/watch-list"}
+                    className="hover:bg-primary hover:text-base-100"
                   >
-                    TV Series
-                  </NavLink>
+                    Watch List
+                  </Link>
                 </li>
                 <li>
-                  <NavLink
-                    to="/people"
-                    className={({ isActive }) =>
-                      isActive ? "text-primary" : ""
-                    }
+                  <a
+                    className="hover:bg-red-600 hover:text-white text-red-600"
+                    onClick={onClick}
                   >
-                    People
-                  </NavLink>
+                    Log out
+                  </a>
                 </li>
               </ul>
             </div>
-            <div></div>
-          </div>
-          <div className="order-2 sm:order-3 mt-4 mb-10 sm:my-0">
-            <p className="">Hi max..</p>
-          </div>
+          ) : (
+            <Link
+              to={"/sign-in"}
+              className="btn-primary p-2 rounded-lg uppercase font-bold"
+            >
+              Log in <FaUser className="ml-4" />
+            </Link>
+          )}
+
+          {/*  */}
+
+          {/*  */}
         </div>
       </header>
       <main className="max-w-[1300px] m-auto">
