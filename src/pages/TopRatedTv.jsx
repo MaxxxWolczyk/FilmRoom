@@ -6,6 +6,7 @@ import {
   useParams,
   useNavigate,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import Spinner from "../components/UI/Spinner";
 import TvItem from "../components/Search/SearchItemTv";
@@ -25,7 +26,7 @@ function TopRatedTv() {
       <React.Suspense fallback={<Spinner />}>
         <Await
           resolve={deferData.data}
-          errorElement={<p>Could not fetch Movies</p>}
+          errorElement={<Navigate to={"/not-found"} />}
         >
           {(data) => (
             <div>

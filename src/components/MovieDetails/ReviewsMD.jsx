@@ -22,7 +22,6 @@ function ReviewsMD({ reviews }) {
 
   const ReviewComponent = ({ item }) => {
     const [showText, setShowText] = useState(false);
-    console.log(item);
 
     return (
       <div

@@ -1,5 +1,5 @@
 import React from "react";
-import { defer, Await, useLoaderData } from "react-router-dom";
+import { defer, Await, useLoaderData, Navigate } from "react-router-dom";
 import CollectionHeader from "../components/Collection/CollectionHeader";
 import Spinner from "../components/UI/Spinner";
 import CollectionList from "../components/Collection/CollectionList";
@@ -12,7 +12,7 @@ function Collection() {
       <React.Suspense fallback={<Spinner />}>
         <Await
           resolve={deferData.data}
-          errorElement={<p>Could not fetch Movies</p>}
+          errorElement={<Navigate to={"/not-found"} />}
         >
           {(data) => (
             <>
@@ -28,7 +28,7 @@ function Collection() {
 
 export default Collection;
 
-export const collectionLoader = async ({ params }) => {
+export const CollectionLoader = async ({ params }) => {
   const url = `https://api.themoviedb.org/3/collection/${params.collectionId}`;
   const options = {
     method: "GET",
@@ -37,8 +37,8 @@ export const collectionLoader = async ({ params }) => {
       Authorization: process.env.REACT_APP_API_TOKEN,
     },
   };
-
   const response = await fetch(url, options);
+
   window.scrollTo(0, 0);
   return defer({
     data: response.json(),

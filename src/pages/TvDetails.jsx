@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { defer, Await, useLoaderData } from "react-router-dom";
+import { defer, Await, useLoaderData, Navigate } from "react-router-dom";
 import Spinner from "../components/UI/Spinner";
 import HeaderTV from "../components/TvDetails/HeaderTv";
 import DescriptionTV from "../components/TvDetails/DescriptionTv";
@@ -31,7 +31,7 @@ function TvDetails() {
     >
       <Await
         resolve={deferData.data}
-        errorElement={<p>Could not fetch Movies</p>}
+        errorElement={<Navigate to={"/not-found"} />}
       >
         {(data) => (
           <div className="px-8 lg:px-40">

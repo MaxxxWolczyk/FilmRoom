@@ -7,6 +7,7 @@ import {
   useNavigate,
   useParams,
   Link,
+  Navigate,
 } from "react-router-dom";
 import Spinner from "../components/UI/Spinner";
 import SeasonOutput from "../components/SeasonDetails/SeasonOutput";
@@ -27,7 +28,7 @@ function SeasonDetails() {
     >
       <Await
         resolve={deferData.data}
-        errorElement={<p>Could not fetch Movies</p>}
+        errorElement={<Navigate to={"/not-found"} />}
       >
         {(data) => (
           <div className="flex flex-col items-center p-2">

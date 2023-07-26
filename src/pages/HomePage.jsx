@@ -9,6 +9,12 @@ import InCinema from "../components/HomePage/InCinema";
 function HomePage() {
   const deferData = useLoaderData();
 
+  const errorElement = (
+    <div className="h-14 text-error p-10 font-bold text-2xl uppercase flex items-center justify-center my-4">
+      Could not get Data
+    </div>
+  );
+
   return (
     <div className="min-h-screen">
       <Headers
@@ -19,10 +25,7 @@ function HomePage() {
       />
       <div className="px-10">
         <React.Suspense fallback={<Spinner />}>
-          <Await
-            resolve={deferData.movieData}
-            errorElement={<p>Could not fetch Movies</p>}
-          >
+          <Await resolve={deferData.movieData} errorElement={errorElement}>
             {(data) => (
               <Trending contentType={"movies"} state={data} path={"/movie"} />
             )}
@@ -33,7 +36,7 @@ function HomePage() {
         <React.Suspense fallback={<Spinner />}>
           <Await
             resolve={deferData.topRatedMovieData}
-            errorElement={<p>Could not fetch Movies</p>}
+            errorElement={errorElement}
           >
             {(data) => <TopRated data={data} mode={"movie"} />}
           </Await>
@@ -41,10 +44,7 @@ function HomePage() {
       </div>
       <div className="px-10">
         <React.Suspense fallback={<Spinner />}>
-          <Await
-            resolve={deferData.tvData}
-            errorElement={<p>Could not fetch Movies</p>}
-          >
+          <Await resolve={deferData.tvData} errorElement={errorElement}>
             {(data) => (
               <Trending contentType={"tv series"} state={data} path={"/tv"} />
             )}
@@ -53,10 +53,7 @@ function HomePage() {
       </div>
       <div className="mb-8 bg-primary">
         <React.Suspense fallback={<Spinner />}>
-          <Await
-            resolve={deferData.topRatedTvData}
-            errorElement={<p>Could not fetch Movies</p>}
-          >
+          <Await resolve={deferData.topRatedTvData} errorElement={errorElement}>
             {(data) => <TopRated data={data} mode={"tv"} />}
           </Await>
         </React.Suspense>
@@ -71,10 +68,7 @@ function HomePage() {
         }}
       >
         <React.Suspense fallback={<Spinner />}>
-          <Await
-            resolve={deferData.nowPlayingData}
-            errorElement={<p>Could not fetch Movies</p>}
-          >
+          <Await resolve={deferData.nowPlayingData} errorElement={errorElement}>
             {(data) => <InCinema data={data} />}
           </Await>
         </React.Suspense>

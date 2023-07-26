@@ -3,7 +3,12 @@ import SearchBox from "../components/Search/SearchBox";
 import MoviesResult from "../components/Search/MoviesResult";
 import Spinner from "../components/UI/Spinner";
 import { defer } from "react-router-dom";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import {
+  useLoaderData,
+  useNavigate,
+  useParams,
+  Navigate,
+} from "react-router-dom";
 import { Await } from "react-router-dom";
 import {
   FaAngleRight,
@@ -75,7 +80,7 @@ function SearchPage() {
         <React.Suspense fallback={<Spinner />}>
           <Await
             resolve={deferData.data}
-            errorElement={<p>Could not fetch Movies</p>}
+            errorElement={<Navigate to={"/not-found"} />}
           >
             {(data) => (
               <>
